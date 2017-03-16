@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   post 'users/create'
 
+  get 'users/logout'
+
   get 'todos/toggle'
 
   # The priority is based upon order of creation: first created -> highest priority.

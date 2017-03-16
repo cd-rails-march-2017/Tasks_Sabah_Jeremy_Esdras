@@ -1,8 +1,14 @@
 class TodosController < ApplicationController
   def index
-    user = User.find(session[:id])
-    @todos = user.to_dos.order(:due)
-    session[:toggle] ||= false
+    if !(session[:id])
+      flash[:message] = []
+      flash[:message].push("please log in")
+      redirect_to "/users/login"
+    else
+      user = User.find(session[:id])
+      @todos = user.to_dos.order(:due)
+      session[:toggle] ||= false
+    end
   end
 
   def new

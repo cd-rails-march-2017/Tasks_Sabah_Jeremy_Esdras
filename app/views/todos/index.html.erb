@@ -12,7 +12,7 @@
         <% else %>
           <input class='chkbx' type="checkbox" data-id="<%=todo.id%>">
         <% end %>
-        <%=todo.title%> <%=todo.due%><br>
+        <%=todo.title%> <%=todo.due%><br><br>
       </form>
 
       <% end %>
@@ -30,7 +30,7 @@
             <% else %>
               <input class='chkbx' type="checkbox" data-id="<%=todo.id%>">
             <% end %>
-            <%=todo.title%> <%=todo.due%><br>
+            <%=todo.title%> <%=todo.due%><br><br>
           </form>
         <% end %>
       <% end %>
@@ -38,6 +38,8 @@
       <a href="/todos/toggle">Show All Finished To Do items!</a>
     <% end %>
 <a href="/todos/new">Create a New one!</a>
+<br><br>
+<a href="/users/logout"><button>logout</button></a>
 <script>
 $(document).ready(function(){
   $('.chkbx').click(function(){
