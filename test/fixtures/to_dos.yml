@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  isdone: false
+  due: 2017-03-16
+  user_id: 
+
+two:
+  title: MyString
+  isdone: false
+  due: 2017-03-16
+  user_id: 

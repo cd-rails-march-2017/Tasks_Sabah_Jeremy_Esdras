@@ -1,0 +1,25 @@
+<h2>Login:</h2>
+<form action="/users/login" method='POST'>
+  <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+  <input type='text' name='name' placeholder='name'>
+  <input type='password' name='password' placeholder='password'>
+  <input type='submit' value='Submit'>
+</form><br>
+
+
+<% if flash[:message] %>
+  <% flash[:message].each do |msg| %>
+
+    <p><h3><i><%=msg%></h3></i></p>
+
+  <%end%>
+<%end%>
+
+
+<h2>Register:</h2>
+<form action="/users/create" method='POST'>
+  <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+  <input type='text' name='user[name]' placeholder='name'>
+  <input type='password' name='user[password]' placeholder='password'>
+  <input type='submit' value='Submit'>
+</form>

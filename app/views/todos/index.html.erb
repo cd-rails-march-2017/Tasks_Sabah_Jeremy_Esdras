@@ -1,0 +1,47 @@
+
+<h1>To Do List</h1>
+
+    <% if session[:toggle] == true %>
+      <% if @todos %>
+      <% @todos.each do |todo| %>
+      <form id="<%=todo.id%>" action="/todos/<%=todo.id%>/update" method="post">
+        <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+        <input type="hidden" name="_method" value="patch">
+        <% if todo.isdone %>
+          <input class='chkbx' type="checkbox" checked="checked" data-id="<%=todo.id%>">
+        <% else %>
+          <input class='chkbx' type="checkbox" data-id="<%=todo.id%>">
+        <% end %>
+        <%=todo.title%> <%=todo.due%><br>
+      </form>
+
+      <% end %>
+      <%end%>
+      <a href="/todos/toggle">Hide All Finished To Do items!</a>
+    <% else %>
+      <% if @todos %>
+      <% @todos.each do |todo| %>
+        <% if todo.isdone == false %>
+          <form id="<%=todo.id%>" action="/todos/<%=todo.id%>/update" method="post">
+            <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+            <input type="hidden" name="_method" value="patch">
+            <% if todo.isdone %>
+              <input class='chkbx' type="checkbox" checked="checked" data-id="<%=todo.id%>">
+            <% else %>
+              <input class='chkbx' type="checkbox" data-id="<%=todo.id%>">
+            <% end %>
+            <%=todo.title%> <%=todo.due%><br>
+          </form>
+        <% end %>
+      <% end %>
+      <%end%>
+      <a href="/todos/toggle">Show All Finished To Do items!</a>
+    <% end %>
+<a href="/todos/new">Create a New one!</a>
+<script>
+$(document).ready(function(){
+  $('.chkbx').click(function(){
+    $('#'+$(this).data('id')).submit();
+  })
+})
+</script>
